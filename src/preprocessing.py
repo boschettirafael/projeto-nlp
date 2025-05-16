@@ -5,8 +5,11 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import RSLPStemmer
 
+# Baixa os recursos
 nltk.download('stopwords')
+nltk.download('rslp') 
 
+# Inicializa stopwords e stemmer
 stopwords_pt = set(stopwords.words('portuguese'))
 stemmer = RSLPStemmer()
 
@@ -20,5 +23,6 @@ def preprocessar_com_stemming(texto):
 class TextoPreprocessador(BaseEstimator, TransformerMixin):
     def fit(self, X, y=None):
         return self
+
     def transform(self, X):
         return X.apply(preprocessar_com_stemming)
